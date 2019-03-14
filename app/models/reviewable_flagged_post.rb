@@ -81,7 +81,7 @@ class ReviewableFlaggedPost < Reviewable
       action.deferred_by_id = performed_by.id
       # so callback is called
       action.save
-      action.add_moderator_post_if_needed(performed_by, :deferred, args[:post_was_deleted])
+      action.add_moderator_post_if_needed(performed_by, :ignored, args[:post_was_deleted])
     end
 
     update_flag_stats(:ignored, actions.map(&:user_id))
