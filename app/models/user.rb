@@ -409,7 +409,7 @@ class User < ActiveRecord::Base
 
   # Approve this user
   def approve(approved_by, send_mail = true)
-    Discourse.deprecate("User#approve is deprecated. Please use the Reviewable API instead.", output_in_test: true)
+    Discourse.deprecate("User#approve is deprecated. Please use the Reviewable API instead.", output_in_test: true, since: "2.3.0beta5", drop_from: "2.4")
 
     # Backwards compatibility - in case plugins or something is using the old API which accepted
     # either a Number or object. Probably should remove at some point

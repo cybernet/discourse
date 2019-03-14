@@ -5,7 +5,7 @@ class QueuedPostsController < ApplicationController
   before_action :ensure_staff
 
   def index
-    Discourse.deprecate("QueuedPostController#index is deprecated. Please use the Reviewable API instead.")
+    Discourse.deprecate("QueuedPostController#index is deprecated. Please use the Reviewable API instead.", since: "2.3.0beta5", drop_from: "2.4")
 
     status = params[:state] || 'pending'
     status = 'pending' if status == 'new'
@@ -19,7 +19,7 @@ class QueuedPostsController < ApplicationController
   end
 
   def update
-    Discourse.deprecate("QueuedPostController#update is deprecated. Please use the Reviewable API instead.")
+    Discourse.deprecate("QueuedPostController#update is deprecated. Please use the Reviewable API instead.", since: "2.3.0beta5", drop_from: "2.4")
     reviewable = Reviewable.find_by(id: params[:id])
     raise Discourse::NotFound if reviewable.blank?
 

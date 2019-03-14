@@ -12,7 +12,7 @@ module FlagQuery
   end
 
   def self.flagged_posts_report(current_user, opts = nil)
-    Discourse.deprecate("FlagQuery is deprecated, use the Reviewable API instead.")
+    Discourse.deprecate("FlagQuery is deprecated, use the Reviewable API instead.", since: "2.3.0beta5", drop_from: "2.4")
 
     opts ||= {}
     offset = opts[:offset] || 0
@@ -147,7 +147,7 @@ module FlagQuery
   end
 
   def self.flagged_post_actions(opts = nil)
-    Discourse.deprecate("FlagQuery is deprecated, please use the Reviewable API instead.")
+    Discourse.deprecate("FlagQuery is deprecated, please use the Reviewable API instead.", since: "2.3.0beta5", drop_from: "2.4")
 
     opts ||= {}
 
@@ -169,7 +169,7 @@ module FlagQuery
   end
 
   def self.flagged_topics
-    Discourse.deprecate("FlagQuery has been deprecated. Please use the Reviewable API instead.")
+    Discourse.deprecate("FlagQuery has been deprecated. Please use the Reviewable API instead.", since: "2.3.0beta5", drop_from: "2.4")
 
     params = {
       pending: Reviewable.statuses[:pending],

@@ -7,7 +7,7 @@ class Admin::FlagsController < Admin::AdminController
   end
 
   def index
-    Discourse.deprecate("FlagsController#index has been deprecated, please use the Reviewable API instead")
+    Discourse.deprecate("FlagsController#index has been deprecated, please use the Reviewable API instead", since: "2.3.0beta5", drop_from: "2.4")
 
     offset = params[:offset].to_i
     per_page = Admin::FlagsController.flags_per_page
@@ -50,7 +50,7 @@ class Admin::FlagsController < Admin::AdminController
   end
 
   def agree
-    Discourse.deprecate("FlagsController#agree has been deprecated, please use the Reviewable API instead")
+    Discourse.deprecate("FlagsController#agree has been deprecated, please use the Reviewable API instead", since: "2.3.0beta5", drop_from: "2.4")
 
     params.permit(:id, :action_on_post)
     post = Post.find(params[:id])
@@ -88,7 +88,7 @@ class Admin::FlagsController < Admin::AdminController
   end
 
   def disagree
-    Discourse.deprecate("FlagsController#disagree has been deprecated, please use the Reviewable API instead")
+    Discourse.deprecate("FlagsController#disagree has been deprecated, please use the Reviewable API instead", since: "2.3.0beta5", drop_from: "2.4")
     params.permit(:id)
     post = Post.find(params[:id])
 
@@ -111,7 +111,7 @@ class Admin::FlagsController < Admin::AdminController
   end
 
   def defer
-    Discourse.deprecate("FlagsController#defer has been deprecated, please use the Reviewable API instead")
+    Discourse.deprecate("FlagsController#defer has been deprecated, please use the Reviewable API instead", since: "2.3.0beta5", drop_from: "2.4")
 
     params.permit(:id, :delete_post)
     post = Post.find(params[:id])
