@@ -223,7 +223,7 @@ class PostDestroyer
   end
 
   def agree(reviewable)
-    if @user.human? && @user.staff?
+    if @user.human? && @user.staff? && rs = reviewable.reviewable_scores.order('created_at DESC').first
       Jobs.enqueue(
         :send_system_message,
         user_id: @post.user_id,
@@ -232,7 +232,7 @@ class PostDestroyer
           flagged_post_raw_content: @post.raw,
           url: @post.url,
           flag_reason: I18n.t(
-            "flag_reasons.#{@post.active_flags.last.post_action_type.name_key}",
+            "flag_reasons.#{PostActionType.types[rs.reviewable_score_type]}",
             locale: SiteSetting.default_locale,
             base_path: Discourse.base_path
           )
