@@ -408,6 +408,8 @@ en:
           title: "Rejected"
         ignored:
           title: "Ignored"
+        reviewed:
+          title: "(All Reviewed)"
 
       types:
         reviewable_flagged_post:

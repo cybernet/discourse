@@ -26,9 +26,11 @@ export default Ember.Controller.extend({
 
   @computed
   statuses() {
-    return ["pending", "approved", "rejected", "ignored"].map(id => {
-      return { id, name: I18n.t(`review.statuses.${id}.title`) };
-    });
+    return ["pending", "approved", "rejected", "ignored", "reviewed"].map(
+      id => {
+        return { id, name: I18n.t(`review.statuses.${id}.title`) };
+      }
+    );
   },
 
   actions: {

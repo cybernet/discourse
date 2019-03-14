@@ -14,7 +14,7 @@ class ReviewablesController < ApplicationController
     end
 
     status = (params[:status] || 'pending').to_sym
-    raise Discourse::InvalidParameter.new(:status) unless Reviewable.statuses[status].present?
+    raise Discourse::InvalidParameter.new(:status) unless allowed_statuses.include?(status)
 
     topic_id = params[:topic_id] ? params[:topic_id].to_i : nil
     category_id = params[:category_id] ? params[:category_id].to_i : nil
@@ -143,6 +143,10 @@ protected
     reviewable = Reviewable.viewable_by(current_user).where(id: params[:reviewable_id]).first
     raise Discourse::NotFound.new if reviewable.blank?
     reviewable
+  end
+
+  def allowed_statuses
+    @allowed_statuses ||= ([:reviewed] + Reviewable.statuses.keys)
   end
 
   def version_required

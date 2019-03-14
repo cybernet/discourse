@@ -269,7 +269,13 @@ class Reviewable < ActiveRecord::Base
     order = (status == :pending) ? 'score DESC, created_at DESC' : 'created_at DESC'
 
     return [] if user.blank?
-    result = viewable_by(user, order: order).where(status: statuses[status])
+    result = viewable_by(user, order: order)
+
+    if status == :reviewed
+      result = result.where(status: [statuses[:approved], statuses[:rejected], statuses[:ignored]])
+    else
+      result = result.where(status: statuses[status])
+    end
     result = result.where(type: type) if type
     result = result.where(category_id: category_id) if category_id
     result = result.where(topic_id: topic_id) if topic_id
