@@ -133,7 +133,7 @@ class ReviewablesController < ApplicationController
     if result.success?
       render_serialized(result, ReviewablePerformResultSerializer)
     else
-      render_json_error(result.errors)
+      render_json_error(result)
     end
   end
 
