@@ -50,7 +50,8 @@ class ReviewableQueuedPost < Reviewable
     creator = PostCreator.new(created_by, create_options.merge(
       skip_validations: true,
       skip_jobs: true,
-      skip_events: true
+      skip_events: true,
+      skip_guardian: true
     ))
     created_post = creator.create
 

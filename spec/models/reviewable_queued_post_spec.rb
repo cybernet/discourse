@@ -66,6 +66,20 @@ RSpec.describe ReviewableQueuedPost, type: :model do
           result = reviewable.perform(moderator, :approve)
           expect(result.created_post).to be_present
         end
+
+        it "Allows autosilenced users to post" do
+          newuser = reviewable.created_by
+          newuser.update!(trust_level: 0)
+          post = Fabricate(:post, user: newuser)
+          PostActionCreator.spam(moderator, post)
+          SiteSetting.spam_score_to_silence_new_user = 1
+          SiteSetting.num_users_to_silence_new_user = 1
+          expect(Guardian.new(newuser).can_create_post?(topic)).to eq(false)
+
+          result = reviewable.perform(moderator, :approve)
+          expect(result.success?).to eq(true)
+        end
+
       end
 
       context "reject" do
