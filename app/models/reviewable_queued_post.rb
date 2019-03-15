@@ -126,8 +126,8 @@ end
 #
 # Indexes
 #
-#  index_reviewables_on_status              (status)
-#  index_reviewables_on_status_and_score    (status,score)
-#  index_reviewables_on_status_and_type     (status,type)
-#  index_reviewables_on_type_and_target_id  (type,target_id) UNIQUE
+#  index_reviewables_on_status_and_created_at  (status,created_at)
+#  index_reviewables_on_status_and_score       (status,score)
+#  index_reviewables_on_status_and_type        (status,type)
+#  index_reviewables_on_type_and_target_id     (type,target_id) UNIQUE
 #

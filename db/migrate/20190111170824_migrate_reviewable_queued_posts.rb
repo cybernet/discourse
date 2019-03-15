@@ -38,7 +38,7 @@ class MigrateReviewableQueuedPosts < ActiveRecord::Migration[5.2]
         updated_at
       )
       SELECT r.id,
-        1,
+        0,
         0,
         qp.user_id,
         qp.created_at,
@@ -58,7 +58,7 @@ class MigrateReviewableQueuedPosts < ActiveRecord::Migration[5.2]
         updated_at
       )
       SELECT r.id,
-        2,
+        1,
         1,
         qp.approved_by_id,
         qp.approved_at,
@@ -79,7 +79,7 @@ class MigrateReviewableQueuedPosts < ActiveRecord::Migration[5.2]
         updated_at
       )
       SELECT r.id,
-        2,
+        1,
         2,
         qp.rejected_by_id,
         qp.rejected_at,

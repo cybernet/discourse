@@ -27,5 +27,6 @@ end
 #
 # Indexes
 #
+#  index_reviewable_histories_on_created_by_id  (created_by_id)
 #  index_reviewable_histories_on_reviewable_id  (reviewable_id)
 #
