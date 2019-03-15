@@ -8,10 +8,12 @@ export default Ember.Controller.extend({
   category_id: null,
   reviewables: null,
   topic_id: null,
+  filtersExpanded: false,
 
   init(...args) {
     this._super(...args);
     this.set("min_score", this.siteSettings.min_score_default_visibility);
+    this.set("filtersExpanded", !this.site.mobileView);
   },
 
   @computed
@@ -31,6 +33,11 @@ export default Ember.Controller.extend({
         return { id, name: I18n.t(`review.statuses.${id}.title`) };
       }
     );
+  },
+
+  @computed("filtersExpanded")
+  toggleFiltersIcon(filtersExpanded) {
+    return filtersExpanded ? "chevron-up" : "chevron-down";
   },
 
   actions: {
@@ -62,6 +69,10 @@ export default Ember.Controller.extend({
 
     loadMore() {
       return this.get("reviewables").loadMore();
+    },
+
+    toggleFilters() {
+      this.toggleProperty("filtersExpanded");
     }
   }
 });

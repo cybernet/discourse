@@ -1,5 +1,48 @@
-.reviewable-title {
-  margin-bottom: 1.5em;
+.reviewable {
+  .reviewable-container {
+    display: flex;
+    flex-direction: row;
+
+    .reviewable-list {
+      flex: 1;
+      box-sizing: border-box;
+    }
+
+    .reviewable-filters {
+      width: 250px;
+      height: 100%;
+      box-sizing: border-box;
+    }
+
+    .reviewable-list + .reviewable-filters {
+      margin-left: 1em;
+    }
+  }
+}
+
+.reviewable-filters {
+  background-color: $primary-very-low;
+  padding: 0.5em 1em 1em 1em;
+  margin-bottom: 1em;
+
+  .reviewable-filter {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 1em 0;
+
+    .filter-label {
+      margin: 0 0 0.5em 0;
+    }
+
+    .score-filter {
+      margin: 0;
+      width: 100%;
+    }
+
+    .category-chooser {
+      width: 100%;
+    }
+  }
 }
 
 .reviewable-topics {
@@ -10,33 +53,19 @@
       padding: 0.5em;
     }
   }
+
+  .reviewable-details {
+    display: flex;
+    justify-content: flex-end;
+
+    .btn {
+      display: flex;
+      align-items: center;
+    }
+  }
 }
 
 .reviewable-filters {
-  background-color: $primary-very-low;
-  padding: 0.5em 1em;
-  margin-bottom: 1em;
-  display: flex;
-
-  .all-filters {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .reviewable-filter {
-    display: flex;
-    align-items: center;
-    margin-right: 1em;
-
-    .filter-label {
-      margin: 0 0.5em 0 0;
-    }
-    .score-filter {
-      margin: 0;
-    }
-  }
-
   .topic-filter {
     margin-top: 1em;
     .btn {
@@ -184,6 +213,12 @@
     font-weight: bold;
     color: $primary-medium;
     margin-bottom: 1em;
+  }
+
+  .post-body {
+    p {
+      word-break: break-all;
+    }
   }
 }
 
